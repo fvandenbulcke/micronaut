@@ -63,7 +63,12 @@
 			<groupId>io.micronaut.configuration</groupId>
 			<artifactId>micronaut-rabbitmq</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>io.micronaut.configuration</groupId>
+			<artifactId>micronaut-kafka</artifactId>
+		</dependency>
+
+
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>

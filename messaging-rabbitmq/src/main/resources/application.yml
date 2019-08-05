@@ -1,3 +1,22 @@
 micronaut:
   application:
     name: messaging-rabbitmq
+  executors:
+    consumer:
+      type: FIXED
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: rabbit
+  password: rabbit
+
+kafka:
+    bootstrap:
+        servers: localhost:9092
+
+micro:
+  rabbit:
+    queue-in: micronaut-queue
+  kafka:
+    topic-in: kafka-car
