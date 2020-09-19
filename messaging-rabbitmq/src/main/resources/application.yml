@@ -6,14 +6,14 @@ micronaut:
       type: FIXED
 
 rabbitmq:
-  host: localhost
+  host: ${RABBITMQ_HOST:localhost}
   port: 5672
   username: rabbit
   password: rabbit
 
 kafka:
-    bootstrap:
-        servers: localhost:9092
+  bootstrap:
+    servers: ${KAFKA_SERVER:localhost}:9092
 
 micro:
   rabbit:

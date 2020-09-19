@@ -2,20 +2,30 @@ package messaging.rabbitmq.dto;
 
 public class Car {
 	
-	private String label;
-
-	public Car() {}
+	private String mark;
+	private Motor motor;
 	
-	public Car(String label) {
-		this.label = label;
+	public Car() {}
+
+	public Car(String mark, Motor motor) {
+		this.mark = mark;
+		this.motor = motor;
 	}
 
-	public String getLabel() {
-		return label;
+	public String getMark() {
+		return mark;
 	}
 
-	public void setLabel(String label) {
-		this.label = label;
+	public void setMark(String mark) {
+		this.mark = mark;
+	}
+
+	public Motor getMotor() {
+		return motor;
+	}
+
+	public void setMotor(Motor motor) {
+		this.motor = motor;
 	}
 
 }

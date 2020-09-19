@@ -4,10 +4,11 @@ import javax.inject.Inject;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.http.HttpResponse;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
 import messaging.rabbitmq.dto.Car;
+import messaging.rabbitmq.dto.Motor;
 import messaging.rabbitmq.producer.KafkaProducer;
 import messaging.rabbitmq.producer.RabbitProducer;
 
@@ -23,20 +24,20 @@ public class ServiceController {
 	@Inject
 	ApplicationContext applicationContext;
 
-	@Post(value="/produce/{label}")
-	public HttpResponse<String> produce(@PathVariable String label) {
+	@Post(value="/produce")
+	public HttpResponse<String> produce(@Body Car car) {
 		try {
-			rabbitProducer.send(new Car(label));
+			rabbitProducer.send(car);
 			return HttpResponse.ok("message have been sent");
 		} catch (Exception e) {
 			return HttpResponse.badRequest("message have not been sent");
 		}
 	}
 
-	@Post(value="/produce/kafka/{label}")
-	public HttpResponse<String> produceEvent(@PathVariable String label) {
+	@Post(value="/produce/kafka")
+	public HttpResponse<String> produceEvent(@Body Motor motor) {
 		try {
-			kafkaProducer.sendCar(new Car(label));
+			kafkaProducer.sendCar(motor);
 			return HttpResponse.ok("event have been sent");
 		} catch (Exception e) {
 			return HttpResponse.badRequest("event have not been sent");
